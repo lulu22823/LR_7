@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЛР 7. Geolocation</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <main>
+        <h1>Лабораторна робота 7. Geolocation</h1>
+        <p>Визначення місцезнаходження та робота з картою</p>
+
+        <div class="task1">
+            <h2>Частина 1. Моє місцезнаходження</h2>
+            <button id="locationButton" type="button">Визначити координати</button>
+            <p id="location" aria-live="polite">Координати ще не визначено.</p>
+            <p id="accuracy">Точність: —</p>
+            <p id="locationTime">Час визначення: —</p>
+            <p id="distance">Відстань до коледжу: —</p>
+            <p class="hint">Координати коледжу з методички: 48.94321, 24.73380.
+                Відстань обчислюється по поверхні Землі, без урахування доріг.</p>
+        </div>
+
+        <div class="task2">
+            <h2>Частина 2. Стеження за переміщенням</h2>
+            <div class="buttons">
+                <button id="watchButton" type="button">Почати стеження</button>
+                <button id="clearWatchButton" type="button" disabled>Зупинити стеження</button>
+            </div>
+            <p id="status" role="status">Стеження вимкнено.</p>
+        </div>
+
+        <div class="task3">
+            <h2>Індивідуальне завдання. Карта</h2>
+            <p>Натисни на маркер, щоб побачити координати та час.
+                Попередні точки переміщення залишаються на карті.</p>
+            <div id="map" aria-label="Карта місцезнаходження"></div>
+            <p id="mapMessage" role="status"></p>
+
+            <h3>Пункт призначення</h3>
+            <form id="destinationForm" novalidate>
+                <label for="destinationLatitude">Широта (від -90 до 90)</label>
+                <input id="destinationLatitude" type="number" min="-90" max="90"
+                    step="any" value="48.94321" required>
+
+                <label for="destinationLongitude">Довгота (від -180 до 180)</label>
+                <input id="destinationLongitude" type="number" min="-180" max="180"
+                    step="any" value="24.73380" required>
+
+                <button type="submit">Показати пункт на карті</button>
+            </form>
+            <p id="destinationMessage" role="status">Початковий пункт призначення - коледж.</p>
+            <p id="destinationDistance">Відстань до пункту призначення: —</p>
+        </div>
+    </main>
+</body>
+</html>
