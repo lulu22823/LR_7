@@ -27,7 +27,7 @@ const options = {
     maximumAge: 0
 };
 
-// 1. Карта Leaflet з підкладкою Esri World Street Map.
+// 1.
 function createMap() {
     if (typeof L === 'undefined') {
         mapMessage.textContent = 'Не вдалося завантажити Leaflet. Перевір Інтернет і онови сторінку.';
@@ -52,7 +52,7 @@ function createMap() {
         .bindPopup('Коледж (початковий пункт призначення)');
 }
 
-// 2. Перевірка підтримки та одноразове визначення координат.
+// 2. 
 function canLocate() {
     if (!window.isSecureContext) {
         statusOutput.textContent = 'Для геолокації відкрий сторінку через localhost або HTTPS.';
@@ -114,7 +114,7 @@ function displayError(error) {
     statusOutput.textContent = errors[error.code] || 'Невідома помилка визначення місцезнаходження.';
 }
 
-// 3. Відстань за формулою гаверсинуса, результат у кілометрах.
+// 3. 
 function degreesToRadians(degrees) {
     return degrees * Math.PI / 180;
 }
@@ -133,7 +133,7 @@ function computeDistance(startCoords, destCoords) {
     return 2 * radius * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-// 4. Початок та зупинка стеження.
+// 4.
 function watchLocation() {
     if (!canLocate() || watchId !== null) return;
 
@@ -162,7 +162,7 @@ function clearWatch() {
     statusOutput.textContent = 'Стеження зупинено. Попередні маркери залишилися на карті.';
 }
 
-// 5. Введення координат пункту призначення та перехід карти до нього.
+// 5. 
 function updateDestinationDistance() {
     if (currentCoords === null) return;
     destinationDistance.textContent = `Відстань до пункту призначення: ${computeDistance(currentCoords, destinationCoords).toFixed(3)} км`;
